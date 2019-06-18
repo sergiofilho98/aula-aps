@@ -4,7 +4,7 @@ public class App {
 	
 	private static GenericService<Marca> marcaService = new GenericService<Marca>();
 	private static ModeloService modeloService = new ModeloService();
-	private static GenericService<Veiculo> veiculoService = new GenericService<Veiculo>();
+	private static VeiculoService veiculoService = new VeiculoService();
 	
 
 	public static void main(String[] args) {
@@ -23,12 +23,25 @@ public class App {
 		
 		assert 1 == vw.getQuantidadeModelos();
 		
-		Veiculo polo = new Veiculo("Polo",vw,"vermehlo",4,"2233");
-		int poloID = veiculoService.cadastrar(polo);
-		Veiculo poloRetornado = veiculoService.get(poloID);
+		Veiculo meuCarro = new Veiculo("Branco",2012, gol);
+		int meuCarroID = veiculoService.cadastrar(meuCarro);
+		Veiculo meuCarroRetornado = veiculoService.get(meuCarroID);
 		
-		assert "Veiculo [nome=Polo, marca=Marca [nome=Volkswagen]]".equals(poloRetornado.toString());
-		//gitmzr
+		assert ("Veiculo [cor=Branco, ano=2012, modelo=Modelo [nome=Gol, marca=Marca [nome=Volkswagen]]]"
+				.equals(meuCarroRetornado.toString()));
+		
+		Veiculo meuCarro2 = new Veiculo("Vermelho", 1990, gol);
+		veiculoService.cadastrar(meuCarro2);
+
+		assert 2 == gol.getQuantidadeVeiculos();
+		
+		Modelo voyage = new Modelo("Voyage", vw);
+		modeloService.cadastrar(voyage);
+		
+		Veiculo meuCarro3 = new Veiculo("Prata", 2019, voyage);
+		veiculoService.cadastrar(meuCarro3);
+		
+
 	}
 	
 }
