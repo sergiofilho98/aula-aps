@@ -23,11 +23,12 @@ public class App {
 		
 		assert 1 == vw.getQuantidadeModelos();
 		
-		Veiculo polo = new Veiculo("Polo",vw);
+		Veiculo polo = new Veiculo("Polo",vw,"vermehlo",4,"2233");
 		int poloID = veiculoService.cadastrar(polo);
 		Veiculo poloRetornado = veiculoService.get(poloID);
 		
 		assert "Veiculo [nome=Polo, marca=Marca [nome=Volkswagen]]".equals(poloRetornado.toString());
+		//gitmzr
 	}
 	
 }
