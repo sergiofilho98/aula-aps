@@ -3,9 +3,8 @@ package br.ufpb.dcx.aps.aula3;
 public class App {
 	
 	private static GenericService<Marca> marcaService = new GenericService<Marca>();
-	private static ModeloService modeloService = new ModeloService();
+	private static GenericService<Modelo> modeloService = new GenericService<Modelo>();
 	private static GenericService<Veiculo> veiculoService = new GenericService<Veiculo>();
-	
 
 	public static void main(String[] args) {
 		Marca vw = new Marca("Volkswagen");
@@ -23,11 +22,39 @@ public class App {
 		
 		assert 1 == vw.getQuantidadeModelos();
 		
-		Veiculo polo = new Veiculo("Polo",vw);
-		int poloID = veiculoService.cadastrar(polo);
-		Veiculo poloRetornado = veiculoService.get(poloID);
+		Veiculo meuCarro = new Veiculo("Branco", 2012, gol);
+		int meuCarroId = veiculoService.cadastrar(meuCarro);
+		Veiculo meuCarroRetornado = veiculoService.get(meuCarroId);
 		
-		assert "Veiculo [nome=Polo, marca=Marca [nome=Volkswagen]]".equals(poloRetornado.toString());
+		assert ("Veiculo [cor=Branco, ano=2012, modelo="
+				+ "Modelo [nome=Gol, marca=Marca [nome=Volkswagen]]]")
+			.equals(meuCarroRetornado.toString());
+
+		Veiculo meuCarro2 = new Veiculo("Vermelho", 1990, gol);
+		veiculoService.cadastrar(meuCarro2);
+
+		assert 2 == gol.getQuantidadeVeiculos();
+		
+		Modelo voyage = new Modelo("Voyage", vw);
+		modeloService.cadastrar(voyage);
+
+		Veiculo meuCarro3 = new Veiculo("Prata", 2019, voyage);
+		veiculoService.cadastrar(meuCarro3);
+		
+		assert 3 == vw.getQuantidadeVeiculos();
+		
+		Marca fiat = new Marca("FIAT");
+		marcaService.cadastrar(fiat);
+
+		Modelo palio = new Modelo("Palio", fiat);
+		modeloService.cadastrar(palio);
+		
+		Veiculo meuCarro4 = new Veiculo("Preto", 2018, palio);
+		veiculoService.cadastrar(meuCarro4);
+
+		assert 2 == marcaService.getQuantidade();
+		assert 3 == modeloService.getQuantidade();
+		assert 4 == veiculoService.getQuantidade();
 	}
-	
+
 }

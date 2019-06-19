@@ -2,33 +2,44 @@ package br.ufpb.dcx.aps.aula3;
 
 public class Veiculo {
 
-	private String nome;
-	private Marca marca;
+	private String cor;
+	private Modelo modelo;
+	private int ano;
 
-	public Veiculo(String nome, Marca marca) {
-		this.nome = nome;
-		this.marca = marca;
+	public Veiculo(String cor, int ano, Modelo modelo) {
+		this.cor = cor;
+		this.ano = ano;
+		this.modelo = modelo;
+		
+		this.modelo.addVeiculos(this);
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCor() {
+		return cor;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
-	public Marca getMarca() {
-		return marca;
+	public Modelo getModelo() {
+		return modelo;
 	}
 
-	public void setMarca(Marca marca) {
-		this.marca = marca;
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 
 	@Override
 	public String toString() {
-		return "Veiculo [nome=" + nome + ", marca=" + marca + "]";
+		return "Veiculo [cor=" + cor + ", ano=" + ano + ", modelo=" + modelo + "]";
 	}
-
 }

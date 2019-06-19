@@ -1,9 +1,13 @@
 package br.ufpb.dcx.aps.aula3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Marca {
 
 	private String nome;
-	private int quantidadeModelos = 0;
+	
+	private List<Modelo> modelos = new ArrayList<Modelo>();
 
 	public Marca(String nome) {
 		this.nome = nome;
@@ -23,11 +27,20 @@ public class Marca {
 	}
 
 	public int getQuantidadeModelos() {
-		return quantidadeModelos;
+		return modelos.size();
 	}
 
-	public void novoModelo() {
-		quantidadeModelos++;
+	public int getQuantidadeVeiculos() {
+		int quantidadeVeiculos = 0;
+		
+		for (Modelo modelo : modelos) {
+			quantidadeVeiculos += modelo.getQuantidadeVeiculos();
+		}
+		
+		return quantidadeVeiculos;
 	}
 	
+	public void addModelo(Modelo modelo) {
+		this.modelos.add(modelo);
+	}
 }
