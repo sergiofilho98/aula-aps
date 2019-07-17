@@ -18,4 +18,7 @@ public class GenericService<T> {
 		return this.itens.get(id);
 	}
 
+	public int getQuantidade() {
+		return itens.size();
+	}
 }

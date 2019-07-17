@@ -2,22 +2,16 @@ package br.ufpb.dcx.aps.aula3;
 
 public class Veiculo {
 
-	private Modelo modelo;
 	private String cor;
+	private Modelo modelo;
 	private int ano;
 
-	public Veiculo(String cor, int ano,Modelo modelo) {
-		this.setModelo(modelo);
-		this.setCor(cor);
-		this.setAno(ano);
-	}
-
-	public Modelo getModelo() {
-		return modelo;
-	}
-
-	public void setModelo(Modelo modelo) {
+	public Veiculo(String cor, int ano, Modelo modelo) {
+		this.cor = cor;
+		this.ano = ano;
 		this.modelo = modelo;
+		
+		this.modelo.addVeiculos(this);
 	}
 
 	public String getCor() {
@@ -26,6 +20,14 @@ public class Veiculo {
 
 	public void setCor(String cor) {
 		this.cor = cor;
+	}
+
+	public Modelo getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
 	}
 
 	public int getAno() {
@@ -38,7 +40,6 @@ public class Veiculo {
 
 	@Override
 	public String toString() {
-		return "Veiculo [modelo=" + modelo + ", cor=" + cor + ", ano=" + ano + "]";
+		return "Veiculo [cor=" + cor + ", ano=" + ano + ", modelo=" + modelo + "]";
 	}
-
 }
