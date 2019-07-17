@@ -35,4 +35,14 @@ public class LogicaApp {
 		veiculoDAO.listar();
 		veiculoDAO.obter(0);
 	}
+	
+	protected VeiculoDAO criarVeiculoDAO() {
+		return new VeiculoDAOBD();
+	}
+	protected ModeloDAO criarModeloDAO() {
+		return new ModeloDAOBD();
+	}
+	protected MarcaDAO criarMarcaDAO() {
+		return new MarcaDAOBD();
+	}
 }

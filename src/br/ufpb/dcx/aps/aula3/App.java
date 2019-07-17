@@ -46,6 +46,7 @@ public class App {
 		Marca fiat = new Marca("FIAT");
 		marcaService.cadastrar(fiat);
 
+
 		Modelo palio = new Modelo("Palio", fiat);
 		modeloService.cadastrar(palio);
 		
@@ -55,5 +56,7 @@ public class App {
 		assert 2 == marcaService.getQuantidade();
 		assert 3 == modeloService.getQuantidade();
 		assert 4 == veiculoService.getQuantidade();
-	}	
+	}
+
+
 }

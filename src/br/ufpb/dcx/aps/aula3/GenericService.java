@@ -21,4 +21,5 @@ public class GenericService<T> {
 	public int getQuantidade() {
 		return itens.size();
 	}
+
 }

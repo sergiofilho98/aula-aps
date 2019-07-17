@@ -42,4 +42,6 @@ public class Veiculo {
 	public String toString() {
 		return "Veiculo [cor=" + cor + ", ano=" + ano + ", modelo=" + modelo + "]";
 	}
+
 }
+
